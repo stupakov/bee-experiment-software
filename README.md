@@ -1,3 +1,5 @@
+## RFID reader output XML to CSV converter
+
 ### Overview
 
 This script converts an XML file from a Maja RFID reader to a CSV file.

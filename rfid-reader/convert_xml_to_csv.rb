@@ -6,8 +6,7 @@ require_relative 'lib/csv_renderer'
 input_filename = ARGV[0]
 
 unless input_filename.match /\.xml$/
-  puts "ERROR: Input file must be an .xml file"
-  exit 1
+  abort "ERROR: Input file must be an .xml file"
 end
 
 output_filename = input_filename.gsub(/xml$/, 'csv')
