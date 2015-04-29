@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'nokogiri'
-require_relative 'lib/csv_renderer'
+require_relative 'lib/xml_to_csv_converter'
 
 input_filename = ARGV[0]
 
@@ -11,21 +10,9 @@ end
 
 output_filename = input_filename.gsub(/xml$/, 'csv')
 
-file = File.read(input_filename)
-doc = Nokogiri::XML(file)
+input_file_contents = File.read(input_filename)
 
-readings = []
-
-doc.css('Dataset').each do |node|
-    reading = {}
-    node.children.each do |datum|
-      reading[datum.name] = datum.content
-    end
-
-    readings << reading
-end
-
-csv_data = Renderers::CsvRenderer.new(readings).render
+csv_data = XmlToCsvConverter.new(input_file_contents).convert_to_csv
 
 File.open(output_filename, 'w') do |csv_file|
   csv_file.write(csv_data)
