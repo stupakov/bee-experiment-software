@@ -4,7 +4,7 @@ module Renderers
   class CsvRenderer
 
     def csv_fields
-      %w|UTCTime ReaderID UID ScanCount Type Address text|
+      %w|UTCTime EpochTime Year Month Day Hour Minute Second Millisecond AmPm ReaderID UID ScanCount Type Address text|
     end
 
     CSV_COLSEP = ";"
